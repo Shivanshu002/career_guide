@@ -1,7 +1,14 @@
-function Class10(){
-    return(
+import { Route } from "react-router-dom";
+
+function Class10() {
+
+
+
+    return (
         <div name='class10' className="">
             <h1>this is class 10 counseling</h1>
+
+
         </div>
     )
 }

@@ -7,3 +7,5 @@ function Psychometric() {
         </div>
     )
 }
+
+export default Psychometric;

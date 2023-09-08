@@ -5,3 +5,5 @@ function Study_abroad(){
         </div>
     )
 }
+
+export default Study_abroad;
