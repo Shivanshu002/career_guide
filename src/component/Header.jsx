@@ -1,7 +1,8 @@
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, BrowserRouter } from "react-router-dom";
 import { BsMenuButtonFill } from 'react-icons/bs';
 import { AiOutlineClose } from 'react-icons/ai';
 import { useState } from 'react';
+import Logo from '../image/cg-logo.png';
 
 import Class10 from '../component/navigation_pages/Class10';
 import Class11_12 from '../component/navigation_pages/Class11_12';
@@ -15,16 +16,16 @@ import Psychometric from '../component/navigation_pages/Psychometric';
 import Sign from '../component/navigation_pages/Sign';
 import Study_abroad from '../component/navigation_pages/Study_abroad';
 
+
 function Header() {
-    let URL = "https://i.ibb.co/w0BJt1L/cg-logo.png";
     const [toggle, setToggle] = useState(false);
     return (
-        <Router>
+        <BrowserRouter>
             <div className="my-2 p-1 ">
                 <div className="flex justify-between ">
                     {/* For logo */}
                     <div>
-                        <img src={URL} />
+                        <Link to='/'> <img src={Logo} /></Link>
                     </div>
                     {/* For navigation links */}
                     <div className="flex  justify-between gap-2 ">
@@ -39,6 +40,21 @@ function Header() {
                             <li className="text-slate-600 hover:bg-blue-500 rounded p-1 delay-100"><Link to='pricing'> Pricing</Link></li>
                             <li className="text-slate-600 hover:bg-blue-500 rounded p-1 delay-100"><Link to='events'> Events</Link></li>
                         </ul>
+                        <Routes>
+                            <Route exact path="/"></Route>
+                            <Route exact path='/class10' element={<Class10 />} />
+                            <Route exact path='/class11_12' element={<Class11_12 />}/>
+                            <Route exact path='/college' element={<College />}/>
+                            <Route exact path='/counsellors' element={<Counseller />}/>
+                            <Route exact path='/professionals' element={<Proffessionals />}/>
+                            <Route exact path='/studyabroad' element={<Study_abroad />}/>
+                            <Route exact path='/psychometric' element={<Psychometric />}/>
+                            <Route exact path='/pricing' element={<Pricing />}/>
+                            <Route exact path='/events' element={<Events />}/>
+                            <Route exact path='/sign' element={<Sign />}/>
+                            <Route exact path='/myprofile' element={<Myprofile />}/>
+                        </Routes>
+
                         {
                             toggle ?
                                 <AiOutlineClose onClick={() => setToggle(!toggle)} className='text-2xl md:hidden block' />
@@ -46,45 +62,37 @@ function Header() {
                                 <BsMenuButtonFill onClick={() => setToggle(!toggle)} className=' text-2xl md:hidden block' />
                         }
                         {/* For Menu */}
-                        <ul className={`duration-300 md:hidden p-2 gap-7 text-white fixed bg-black top-[97px]${toggle ? 'left-[0]' : 'left-[-100%]'}`}>
-                            <li className='p-5'>Class10</li>
-                            <li className='p-5'>Class11_12</li>
-                            <li className='p-5'>College</li>
-                            <li className='p-5'>Counseller</li>
-                            <li className='p-5'>Professionals</li>
-                            <li className='p-5'>Study_abroad</li>
-                            <li className='p-5'>Psychometric Test</li>
-                            <li className='p-5'>Pricing</li>
-                            <li className='p-5'>Events</li>
+                        <ul className={`duration-300 z-10 rounded md:hidden p-2 gap-3 text-white fixed bg-black top-[40px] 
+                ${toggle ? 'left-[0]' : 'left-[-100%]'}`
+                        }>
+                            <li className='p-2'>Class10</li>
+                            <li className='p-2'>Class11_12</li>
+                            <li className='p-2'>College</li>
+                            <li className='p-2'>Counseller</li>
+                            <li className='p-2'>Professionals</li>
+                            <li className='p-2'>Study_abroad</li>
+                            <li className='p-2'>Psychometric Test</li>
+                            <li className='p-2'>Pricing</li>
+                            <li className='p-2'>Events</li>
+                            <li className='p-2'><a href="https://wa.me/<6307340868> ">6307340868</a></li>
+                            <li className='p-2'> <button><Link to='/sign'>Sign In</Link></button></li>
+                            <li className='p-2'> <button><Link to='/myprofile'> My Profile</Link></button></li>
                         </ul>
-                        <Routes>
-                            <Route exact path='/class10' element={<Class10 />}></Route>
-                            <Route exact path='/class11_12' element={<Class11_12 />}></Route>
-                            <Route exact path='/college' element={<College />}></Route>
-                            <Route exact path='/counsellors' element={<Counseller />}></Route>
-                            <Route exact path='/professionals' element={<Proffessionals />}></Route>
-                            <Route exact path='/studyabroad' element={<Study_abroad />}></Route>
-                            <Route exact path='/psychometric' element={<Psychometric />}></Route>
-                            <Route exact path='/pricing' element={<Pricing />}></Route>
-                            <Route exact path='/events' element={<Events />}></Route>
-                            <Route exact path='/sign' element={<Sign />}></Route>
-                            <Route exact path='/myprofile' element={<Myprofile />}></Route>
-                        </Routes>
+
+
                         {/* for number */}
-                        <div className="my-1 hidden md:flex">
-                            <a className="p-1 text-blue-500" href="https://wa.me/<6307340868> ">6307340868</a>
-                        </div>
+                        <div className="my-1 hidden md:flex"><a className="p-1 text-blue-500" href="https://wa.me/<6307340868> ">6307340868</a></div>
                     </div>
+
+
                     {/* for Signup and Ragistration buttton */}
                     <div className="gap-3 hidden md:flex">
-                        <button className=" text-slate-600 hover:bg-blue-500 rounded p-1 delay-100">
-                            <Link to='/sign'> Sign In</Link></button>
-                        <button className="text-slate-600 hover:bg-blue-500 rounded p-1 delay-100">
-                            <Link to='/myprofile'> My Profile</Link></button>
+                        <button className=" text-slate-600 hover:bg-blue-500 rounded p-1 delay-100"><Link to='/sign'> Sign In</Link></button>
+                        <button className="text-slate-600 hover:bg-blue-500 rounded p-1 delay-100"><Link to='/myprofile'> My Profile</Link></button>
                     </div >
                 </div>
             </div>
-        </Router>
+        </BrowserRouter>
 
 
     )
